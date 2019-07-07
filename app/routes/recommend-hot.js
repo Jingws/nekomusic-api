@@ -20,11 +20,13 @@ router.get('/rcmd/music-list', async (ctx, next) => {
           let link = $(v).find('div').find('a').attr('href')
           let amount = $(v).find('div').find('div').find('span').eq(1).text()
           let text = $(v).find('p').text()
+          let type = $(v).find('p').find('a').attr('data-res-type')
           let obj = {
             img: img,
             link: link,
             amount: amount,
-            text: text
+            text: text,
+            type: type
           }
           arr.push(obj)
         })
