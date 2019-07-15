@@ -5,19 +5,17 @@ const request = require('superagent')
 
 const router = Router()
 
-router.post('/play-list-detail', async (ctx, next) => {
+router.post('/playlist-detail', async (ctx, next) => {
   const id = ctx.request.body.id
-  const obj = []
 
   const data = await new Promise(resolve => {
     request.get(urlroot + '/api/playlist/detail?id=' + id)
       .end((err, res) => {
         const r = res.text
-        obj.push(r)
-        resolve(obj)
+        resolve(r)
       })
   })
-  ctx.body = data[0]
+  ctx.body = data
 })
 
 export default router
