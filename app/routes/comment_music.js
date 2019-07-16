@@ -11,7 +11,7 @@ router.post('/comment-music', async (ctx, next) => {
   const limit = ctx.request.body.limit ? ctx.request.body.limit : 20
 
   const data = await new Promise(resolve => {
-    request.get(commentsMusic + id + '?offset=' + offset + '?limit=' + limit)
+    request.get(commentsMusic + id + '?offset=' + offset + '&limit=' + limit)
       .end((err, res) => {
         const r = res.text
         resolve(r)
